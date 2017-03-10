@@ -1,0 +1,31 @@
+﻿@using AGLTest.Models;
+
+@model List<GroupedPeopleModel>
+@{
+    ViewBag.Title = "AGL Test - People with Cats";    
+}
+@if (Model.Any())
+{
+    <div class="row">
+        <div class="col-md-12">
+            <h2>People Gender with Cats</h2>
+            <p>
+                Following gender groups are listed along with their cat names in alphabetical order after consuming the webservice.
+            </p>            
+        </div>        
+    </div>
+    foreach (var group in Model)
+    {
+        <span>@group.Gender</span><br />
+        <ul>
+            @foreach (var cat in group.Cats)
+            {
+            <li>@cat.Name</li>
+            }
+        </ul>
+    }
+}
+else
+{
+    <p>There are no people with cats.</p>
+}
